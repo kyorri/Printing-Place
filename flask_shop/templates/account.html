@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>My account - Printing Place</title>
+{% endblock %}
+
+{% block body %}
+<div class="h2 d-inline">Hello, <span class="text-info">{{current_user.username}}</span></div>
+
+<hr>
+<div class="card">
+  <h4 class="card-header">Account information</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="h6 col-5 text-left">Username</div>
+        <div class="col-2 text-center py-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+            <path
+              d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+          </svg></div>
+        <div class="h6 col-5 text-center">{{current_user.username}}</div>
+      </div>
+      <div class="row">
+        <div class="h6 col-5 text-left">Email Address</div>
+        <div class="col-2 text-center py-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+            <path
+              d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+          </svg></div>
+        <div class="h6 col-5 text-center">{{current_user.email_address}}</div>
+      </div>
+      <div class="row">
+        <div class="h6 col-5 text-left">Phone Number</div>
+        <div class="col-2 text-center py-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+            <path
+              d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+          </svg></div>
+        <div class="h6 col-5 text-center">{{current_user.phone_number}}</div>
+      </div>
+
+      <div class="row">
+        <div class="h6 col-5 text-left">Address</div>
+        <div class="col-2 text-center py-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+            <path
+              d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+          </svg></div>
+        <div class="h6 col-5 text-center">{{current_user.full_address}}</div>
+      </div>
+
+
+    </div>
+    <div class="card-body">
+      <form method="POST" action="{{url_for('account')}}" autocomplete="off">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+        <div class="my-2">
+          {{ form.username.label }} {{ form.username(class="form-control", id="username") }}
+        </div>
+        {{ form.email_address.label }} {{ form.email_address(class="form-control", id="email") }}<br>
+        {{ form.phone_number.label }} {{ form.phone_number(class="form-control", id="phone") }}<br>
+        {{ form.address.label }} {{ form.address(class="form-control", id="address") }}<br>
+        <div>
+          {{ form.submit(class="btn btn-outline-dark mx-auto", width = "200px") }}
+        </div>
+      </form>
+    </div>
+</div>
+{% endblock %}

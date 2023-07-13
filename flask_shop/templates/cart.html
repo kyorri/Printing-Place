@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Shopping Cart</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="h2">Your Shopping Cart</div>
+    <hr>
+    {% if products %}
+    <div class="row">
+        
+        {% for product in products %}
+        <div class="card m-1" style="width: 22rem;">
+            <img class="card-img-top" src="{{url_for('static', filename = 'images/' + product['product_image'])}}"
+                class="d-inline-block" width="240px" height="240px" style="object-fit: cover;">
+            <div class="card-body">
+                <h5 class="h3 card-title">{{product['product_name']}}</h5>
+                <p class="card-text">{{product['product_description']}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="h6 list-group-item">Price per product ${{product['product_price']}}<br>Quantity x{{product['quantity']}}</li>
+                <li class="h6 list-group-item">Total ${{product['quantity'] * product['product_price']}}</li>
+                <li class="h6 list-group-item text-center">
+                    <a href="/shop/addcart/{{product['id']}}">
+                        <button class="btn btn-success px-5"> Add </button>
+                    </a>
+                </li>
+                <li class="h6 list-group-item text-center">
+                    <a href="/shop/del/{{product['id']}}">
+                        <button class="btn btn-danger px-4"> Remove </button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {% endfor %}
+        
+        
+    </div>
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            
+            <div class="h4 d-inline-block m-0">Total : ${{total}}</div>
+        </div>
+        <a class="h5 m-0" href="{{url_for('order')}}"><button class="btn btn-outline-dark">Order</button></a>
+    </div>
+    {% else %}
+        <h4>You do not have any products in the cart!</h4>
+        <h5>Take a look to our shop 
+        <a href="{{url_for('shop')}}">here</a>.
+        </h5>
+    {% endif %}
+</div>
+{% endblock %}

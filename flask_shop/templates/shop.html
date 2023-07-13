@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Printing Place - Shop</title>
+{% endblock %}
+
+{% block body %}
+<div class="h2">Our Shop Picks For You</div>
+<hr>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+	{% for product in products %}
+	<div class="col">
+		<div class="card mb-4">
+			<div class="card-header py-3">
+				<img src="{{ url_for('static', filename='images/' + product.product_image) }}" class="d-inline-block"
+					width="240px" height="240px" style="object-fit: cover;" />
+			</div>
+			<div class="card-body">
+				<div class="d-inline-block h2 card-title pricing-card-title mb-3">{{product.product_name}}</div>
+				<hr class="my-0">
+				<ul class="list-unstyled mt-3 mb-4">
+					<li>{{product.product_description}}</li>
+				</ul>
+				<a href="addtocart/{{product.id}}">
+					<button type="button" class="w-75 btn btn-lg btn-outline-dark">Buy Now
+						(${{product.product_price}})</button>
+				</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

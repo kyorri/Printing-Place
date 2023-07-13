@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Printing Place - Services</title>
+{% endblock %}
+
+{% block body %}
+<div class="h2">Services we provide:</div>
+<hr>
+<ul class="mt-3 mb-5" style="list-style-type: circle;">
+    {% if s %}
+        {% for service in s %}
+        <li> {{ service.service_provided }} </li>
+        {% endfor %}
+    {% else %}
+        <li class="text-warning">No services added.</li>
+    {% endif %}
+</ul>
+<hr>
+<div class="text-muted">Feel free to contact us for orders <a class="mark" href="{{url_for('contact')}}">here</a>.</div>
+{% endblock %}

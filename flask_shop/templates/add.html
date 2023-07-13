@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Add {{type}}</title>
+{% endblock %}
+
+{% block body %}
+<div class="container jumbotron">
+        <div class="d-inline p-3 py-2 border bg-secondary rounded text-light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+              </svg>
+            <a class="text-light text-decoration-none" href="/admin/">
+                Back to admin page
+            </a>
+        </div>
+    {% if type == 'Service' or type == 'Product' or type == 'User' %}
+    <div class="h1 pt-4">Add New <span>{{type}}</span></div>
+    <hr>
+    {% endif %}
+    <form method="POST" action="" autocomplete="off">
+        {% if type == 'Product' %}
+        {{ form.hidden_tag() }}
+        <fieldset autocomplete="off">
+            <div>
+                {{ form.product_name(class="form-control", id="pname", placeholder="Product Name") }}
+            </div>
+			<hr>
+            <div>
+                {{ form.product_description(class="form-control", id="pdescr", placeholder="Product Description") }}
+            </div>
+			<hr>
+            <div>
+                {{ form.product_image(class="form-control", id="pimage", placeholder="Product Image") }}
+            </div>
+			<hr>
+            <div>
+                {{ form.product_price(class="form-control", id="pprice", placeholder="Product Price") }}
+            </div>
+        </fieldset>
+        <hr>
+        <div>
+            {{ form.product_submit(class="btn btn-outline-dark mx-auto", width = "200px") }}
+        </div>
+        {% else %}
+            {% if type == 'Service' %}
+            {{ form.hidden_tag() }}
+            <fieldset autocomplete="off">
+                <div>
+                    {{ form.service_description(class="form-control", id="sdescr", placeholder="Service Description") }}
+                </div>
+            </fieldset>
+            <hr>
+            <div>
+                {{ form.service_submit(class="btn btn-outline-dark mx-auto", width = "200px") }}
+            </div>
+            {% else %}
+                {% if type == 'User' %}
+                {{ form.hidden_tag() }}
+                <fieldset autocomplete="off">
+                    <div>
+                        {{ form.username(class="form-control", id="uname", placeholder="Username") }}
+                    </div>
+					<hr>
+                    <div>
+                        {{ form.email_address(class="form-control", id="uemail", placeholder="Email Address") }}
+                    </div>
+					<hr>
+                    <div>
+                        {{ form.password(class="form-control", id="upass", placeholder="Password") }}
+                    </div>
+					<hr>
+                    <div>
+                        {{ form.password_confirm(class="form-control", id="upassc", placeholder="Confirm Password") }}
+                    </div>
+					<hr>
+                    <div>
+                        {{ form.phone_number(class="form-control", id="uphone", placeholder="Phone Number") }}
+                    </div>
+					<hr>
+                    <div>
+                        {{ form.address(class="form-control", id="uaddress", placeholder="Full Address") }}
+                    </div>
+                </fieldset>
+                <hr>
+                <div>
+                    {{ form.submit(class="btn btn-outline-dark mx-auto", width = "200px") }}
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+    </form>
+</div>
+{% endblock %}

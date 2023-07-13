@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Printing Place</title>
+{% endblock %}
+
+{% block body %}
+<section>
+    {% if current_user.is_authenticated %}
+    <div class="h1"> Welcome Back!</div>
+    {% else %}
+    <div class="h1"> Welcome!</div>
+    {% endif %}
+    <hr>
+    <div class="my-2">
+        &emsp;Welcome to our online 3D printing services store! We pride ourselves on providing high-quality and
+        reliable 3D printing solutions for all your creative needs. Whether you're a hobbyist, designer, or engineer,
+        our store offers a wide range of cutting-edge technologies and materials to bring your ideas to life.
+    </div>
+</section>
+{% endblock %}
