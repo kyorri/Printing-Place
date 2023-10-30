@@ -1,7 +1,7 @@
 # Printing-Place
 A Flask web application that manages a store for 3D printed objects and hosts services for printing.
 
-You will need Python 3.11.4 (https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe) with these packages:
+You will need [Python 3.11.4](https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe) with these packages:
 - bcrypt==4.0.1
 - blinker==1.6.2
 - click==8.1.4
